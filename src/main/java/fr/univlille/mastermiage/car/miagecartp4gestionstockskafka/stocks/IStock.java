@@ -9,7 +9,9 @@ public interface IStock {
 
     void deleteArticle(Long id);
 
-    Stock saveArticle(Stock stock);
+    Stock save(Stock stock);
 
     Optional<Stock> getArticleById(Long id);
+
+    Optional<Stock> findByNom(String nom);
 }

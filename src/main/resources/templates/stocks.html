@@ -11,15 +11,34 @@
 
 			<h2>État du stock</h2>
 
-			<p>Article / quantité</p>
+			<div th:if="${stocks.isEmpty()}">
+				<p>Veuillez réapprovisionner le stock, il est vide</p>
+			</div>
 
-			<a href="/">refresh</a>
+			<div th:if="${!stocks.isEmpty()}">
+				<table>
+					<thead>
+						<tr>
+							<th>Article</th>
+							<th>Quantité</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="stock : ${stocks}">
+							<td th:text="${stock.nom}">Article</td>
+							<td th:text="${stock.quantite}">0</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<a href="/stocks">refresh</a>
 
 			<hr>
 
 			<h2>Réapprovisionnement du stock</h2>
 
-			<form action="/" method="post">
+			<form action="/stocks/reapprovisionner" method="post">
 				<button type="submit">Réapprovisionner</button>
 			</form>
 		</div>

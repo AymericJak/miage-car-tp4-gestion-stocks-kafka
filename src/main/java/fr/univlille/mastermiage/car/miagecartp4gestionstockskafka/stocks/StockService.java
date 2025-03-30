@@ -28,11 +28,15 @@ public class StockService implements IStock {
         stockRepository.deleteById(id);
     }
 
-    public Stock saveArticle(Stock stock) {
+    public Stock save(Stock stock) {
         return stockRepository.save(stock);
     }
 
     public Optional<Stock> getArticleById(Long id) {
         return stockRepository.findById(id);
+    }
+
+    public Optional<Stock> findByNom(String nom) {
+        return stockRepository.findByNom(nom);
     }
 }
