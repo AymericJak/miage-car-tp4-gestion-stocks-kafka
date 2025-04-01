@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>TP4 - AymericJak</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>TP4- Kafka</h1>
+
+			<h2>État du stock</h2>
+
+			<div th:if="${stocks.isEmpty()}">
+				<p>Veuillez réapprovisionner le stock, il est vide</p>
+			</div>
+
+			<div th:if="${!stocks.isEmpty()}">
+				<table>
+					<thead>
+						<tr>
+							<th>Article</th>
+							<th>Quantité</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="stock : ${stocks}">
+							<td th:text="${stock.nom}">Article</td>
+							<td th:text="${stock.quantite}">0</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<a href="/stocks">refresh</a>
+
+			<hr>
+
+			<h2>Réapprovisionnement du stock</h2>
+
+			<form action="/stocks/reapprovisionner" method="post">
+				<button type="submit">Réapprovisionner</button>
+			</form>
+		</div>
+
+	</body>
+</html>
+
+
